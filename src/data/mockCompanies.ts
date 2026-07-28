@@ -1,0 +1,192 @@
+import { Company } from '../types';
+
+export function calculateCompleteness(company: Partial<Company>): number {
+  let score = 0;
+  if (company.name) score += 20;
+  if (company.country) score += 10;
+  if (company.email) score += 20;
+  if (company.website) score += 20;
+  if (company.whatsapp || company.phone) score += 15;
+  if (company.socials?.instagram || company.socials?.facebook || company.socials?.linkedin) score += 10;
+  if (company.ministryLicense) score += 5;
+  return Math.min(100, score);
+}
+
+export const initialCompanies: Company[] = [
+  {
+    id: 'c1',
+    name: 'Al-Mosafer Umrah & Hajj Services',
+    country: 'Saudi Arabia',
+    city: 'Makkah',
+    email: 'info@almosafer-hajj.sa',
+    emailStatus: 'valid',
+    emailMxValid: true,
+    website: 'https://almosafer-hajj.sa',
+    whatsapp: '+966501234567',
+    phone: '+96612540000',
+    socials: {
+      instagram: '@almosafer_hajj',
+      facebook: 'facebook.com/almosafer.hajj'
+    },
+    ministryLicense: 'UMR-90421',
+    completenessScore: 100,
+    outreachStatus: 'replied',
+    lastEnrichedAt: '2026-07-20T10:00:00Z',
+    aiNotes: 'Verified Saudi licensed Umrah operator. VIP hotel packages near Haram.',
+  },
+  {
+    id: 'c2',
+    name: 'Tazkia Travel Umroh & Haji',
+    country: 'Indonesia',
+    city: 'Jakarta',
+    email: 'info@tazkiatravel.co.id',
+    emailStatus: 'valid',
+    emailMxValid: true,
+    website: 'https://tazkiatravel.co.id',
+    whatsapp: '+6281298765432',
+    phone: '+622187654321',
+    socials: {
+      instagram: '@tazkia_travel',
+      facebook: 'facebook.com/tazkiatours'
+    },
+    ministryLicense: 'PPIU-2023/184',
+    completenessScore: 100,
+    outreachStatus: 'partner_onboarded',
+    lastEnrichedAt: '2026-07-22T14:30:00Z',
+    aiNotes: 'Leading Indonesian pilgrim organizer. High volume group bookings.',
+  },
+  {
+    id: 'c3',
+    name: 'Hilal Turizm Hac ve Umre',
+    country: 'Turkey',
+    city: 'Istanbul',
+    email: 'bilgi@hilaltur.com.tr',
+    emailStatus: 'unverified',
+    website: '',
+    whatsapp: '',
+    phone: '+902125340000',
+    socials: {},
+    completenessScore: 40,
+    outreachStatus: 'not_contacted',
+    aiNotes: 'Missing website, whatsapp and social profiles. Needs AI enrichment.',
+  },
+  {
+    id: 'c4',
+    name: 'Pilgrim Tour Tashkent',
+    country: 'Uzbekistan',
+    city: 'Tashkent',
+    email: 'pilgrim.tashkent@gmail.com',
+    emailStatus: 'unverified',
+    website: '',
+    whatsapp: '+998901234567',
+    phone: '',
+    socials: {
+      instagram: '@pilgrim_tour_uz'
+    },
+    completenessScore: 65,
+    outreachStatus: 'not_contacted',
+    aiNotes: 'Popular agency in Tashkent. Gmail address needs deliverability check.',
+  },
+  {
+    id: 'c5',
+    name: 'Al-Hijaz Hajj Group Cairo',
+    country: 'Egypt',
+    city: 'Cairo',
+    email: 'contact@alhijaz-cairo.com',
+    emailStatus: 'unverified',
+    website: 'http://alhijaz-cairo.com',
+    whatsapp: '',
+    phone: '+20227950000',
+    socials: {},
+    completenessScore: 60,
+    outreachStatus: 'not_contacted',
+    aiNotes: 'Egyptian Umrah operator. Missing WhatsApp contact.',
+  },
+  {
+    id: 'c6',
+    name: 'Hikmat Travel Almaty',
+    country: 'Kazakhstan',
+    city: 'Almaty',
+    email: '',
+    emailStatus: 'unverified',
+    website: '',
+    whatsapp: '',
+    phone: '+77273900000',
+    socials: {},
+    completenessScore: 30,
+    outreachStatus: 'not_contacted',
+    aiNotes: 'Only company name and phone available. High priority for AI Research Agent.',
+  },
+  {
+    id: 'c7',
+    name: 'Dome Tours UK',
+    country: 'United Kingdom',
+    city: 'London',
+    email: 'info@dometours.co.uk',
+    emailStatus: 'valid',
+    emailMxValid: true,
+    website: 'https://dometours.co.uk',
+    whatsapp: '+447911123456',
+    phone: '+442085551234',
+    socials: {
+      instagram: '@dometoursuk',
+      facebook: 'facebook.com/dometoursuk'
+    },
+    ministryLicense: 'UK-ATOL-9812',
+    completenessScore: 100,
+    outreachStatus: 'sent',
+    lastEnrichedAt: '2026-07-25T09:15:00Z',
+    aiNotes: 'ATOL-protected UK Hajj & Umrah specialist. Outreach proposal sent in English.',
+  },
+  {
+    id: 'c8',
+    name: 'Dar El Salam Travels NYC',
+    country: 'United States',
+    city: 'New York',
+    email: 'hajj@darelsalam.com',
+    emailStatus: 'valid',
+    emailMxValid: true,
+    website: 'https://darelsalam.com',
+    whatsapp: '+12125550199',
+    phone: '+12125550100',
+    socials: {
+      facebook: 'facebook.com/darelsalam',
+      instagram: '@darelsalam_travel'
+    },
+    ministryLicense: 'US-HAJJ-4012',
+    completenessScore: 100,
+    outreachStatus: 'opened',
+    lastEnrichedAt: '2026-07-26T11:00:00Z',
+    aiNotes: 'Premuim North American luxury Hajj agency.',
+  },
+  {
+    id: 'c9',
+    name: 'Emirates Pilgrim Services',
+    country: 'United Arab Emirates',
+    city: 'Dubai',
+    email: 'support@emiratespilgrim.ae',
+    emailStatus: 'unverified',
+    website: '',
+    whatsapp: '+971509998877',
+    phone: '+97143332211',
+    socials: {},
+    completenessScore: 65,
+    outreachStatus: 'not_contacted',
+    aiNotes: 'Dubai based luxury group. Missing website and socials.',
+  },
+  {
+    id: 'c10',
+    name: 'Safar Umrah Group',
+    country: 'Pakistan',
+    city: 'Lahore',
+    email: 'info@safarumrah.pk',
+    emailStatus: 'unverified',
+    website: '',
+    whatsapp: '',
+    phone: '+924235780000',
+    socials: {},
+    completenessScore: 40,
+    outreachStatus: 'not_contacted',
+    aiNotes: 'Pakistani Umrah agent. Missing website, WhatsApp, and socials.',
+  }
+];

@@ -1,0 +1,6 @@
+{
+  "name": "NewHaj Hub - AI Agents & Company DB Orchestrator",
+  "description": "Autonomous multi-agent platform for enriching Umrah & Hajj company databases, verifying emails, finding social channels, and managing automated B2B outreach.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
